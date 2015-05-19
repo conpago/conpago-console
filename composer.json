@@ -1,0 +1,30 @@
+{
+	"name": "saigon/conpago-console",
+	"description": "Conpago console commandline framework.",
+	"type": "library",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Bartosz Gołek",
+			"email": "bartosz.golek@gmail.com",
+			"homepage": "http://bartosz.golek.biz"
+		}
+	],
+	"require": {
+		"saigon/conpago-console-contract": "dev-default",
+		"saigon/conpago-di": "dev-default",
+		"saigon/conpago-contract": "dev-default"
+	},
+	"require-dev": {
+		"pdepend/pdepend": "*",
+		"phpmd/phpmd": "*",
+		"squizlabs/php_codesniffer": "*",
+		"sebastian/phpcpd": "*",
+		"phpunit/phpunit": "4.*"
+	},
+	"autoload": {
+		"psr-0": {
+			"Saigon\\Conpago\\Console\\": "src/"
+		}
+	}
+}
