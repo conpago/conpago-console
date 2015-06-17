@@ -6,10 +6,10 @@
 	 * Time: 23:22
 	 */
 
-	namespace Saigon\Conpago\Console;
+	namespace Conpago\Console;
 
-	use Saigon\Conpago\Console\Contract\ICommand;
-	use Saigon\Conpago\Console\Contract\Presentation\IHelpCommandPresenter;
+	use Conpago\Console\Contract\ICommand;
+	use Conpago\Console\Contract\Presentation\IHelpCommandPresenter;
 
 	class HelpCommand implements ICommand
 	{

@@ -1,5 +1,5 @@
 {
-	"name": "saigon/conpago-console",
+	"name": "conpago/conpago-console",
 	"description": "Conpago console commandline framework.",
 	"type": "library",
 	"license": "MIT",
@@ -11,9 +11,9 @@
 		}
 	],
 	"require": {
-		"saigon/conpago-console-contract": "dev-default",
-		"saigon/conpago-di": "dev-default",
-		"saigon/conpago-contract": "dev-default"
+		"conpago/conpago-console-contract": "dev-default",
+		"conpago/conpago-di": "dev-default",
+		"conpago/conpago-contract": "dev-default"
 	},
 	"require-dev": {
 		"pdepend/pdepend": "*",
@@ -24,7 +24,7 @@
 	},
 	"autoload": {
 		"psr-0": {
-			"Saigon\\Conpago\\Console\\": "src/"
+			"Conpago\\Console\\": "src/"
 		}
 	}
 }

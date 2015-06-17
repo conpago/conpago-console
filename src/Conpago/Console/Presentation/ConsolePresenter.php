@@ -6,10 +6,10 @@
  * Time: 23:40
  */
 
-	namespace Saigon\Conpago\Console\Presentation;
+	namespace Conpago\Console\Presentation;
 
 
-	use Saigon\Conpago\Console\Contract\Presentation\IConsolePresenter;
+	use Conpago\Console\Contract\Presentation\IConsolePresenter;
 
 	class ConsolePresenter implements IConsolePresenter {
 

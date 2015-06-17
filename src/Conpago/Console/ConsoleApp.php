@@ -6,13 +6,13 @@
 	 * Time: 00:18
 	 */
 
-	namespace Saigon\Conpago\Console;
+	namespace Conpago\Console;
 
-	use Saigon\Conpago\Console\Contract\ICommand;
-	use Saigon\Conpago\DI\IFactory;
-	use Saigon\Conpago\Helpers\Contract\IArgs;
-	use Saigon\Conpago\Contract\IApp;
-	use Saigon\Conpago\Console\Contract\Presentation\IConsolePresenter;
+	use Conpago\Console\Contract\ICommand;
+	use Conpago\DI\IFactory;
+	use Conpago\Helpers\Contract\IArgs;
+	use Conpago\Contract\IApp;
+	use Conpago\Console\Contract\Presentation\IConsolePresenter;
 
 	class ConsoleApp implements IApp
 	{
@@ -34,9 +34,9 @@
 		 * @param IArgs $args
 		 * @param IConsolePresenter $presenter
 		 *
-		 * @inject Factory<\Saigon\Conpago\Console\Contract\ICommand> $commands
-		 * @inject \Saigon\Conpago\Helpers\Contract\IArgs $args
-		 * @inject \Saigon\Conpago\Console\Contract\Presentation\IConsolePresenter $presenter
+		 * @inject Factory<\Conpago\Console\Contract\ICommand> $commands
+		 * @inject \Conpago\Helpers\Contract\IArgs $args
+		 * @inject \Conpago\Console\Contract\Presentation\IConsolePresenter $presenter
 		 */
 		function __construct(array $commands, IArgs $args, IConsolePresenter $presenter)
 		{

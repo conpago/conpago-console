@@ -6,7 +6,7 @@
  * Time: 23:40
  */
 
-	namespace Saigon\Conpago\Console\Presentation;
+	namespace Conpago\Console\Presentation;
 
 	class ConsolePresenterTest extends \PHPUnit_Framework_TestCase {
 

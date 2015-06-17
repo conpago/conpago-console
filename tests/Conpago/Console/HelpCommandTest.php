@@ -6,7 +6,7 @@
 	 * Time: 23:22
 	 */
 
-	namespace Saigon\Conpago\Console;
+	namespace Conpago\Console;
 
 
 	class HelpCommandTest extends \PHPUnit_Framework_TestCase
@@ -16,7 +16,7 @@
 			$description = 'description';
 			$commandMetadata = array ( $command => array('desc' => $description ));
 
-			$presenter = $this->getMock('Saigon\Conpago\Console\Contract\Presentation\IHelpCommandPresenter');
+			$presenter = $this->getMock('Conpago\Console\Contract\Presentation\IHelpCommandPresenter');
 			$presenter->expects($this->once())->method('printCommandInfo')
 				->with($this->equalTo($command), $this->equalTo($description));
 
@@ -35,7 +35,7 @@
 				$command2 => array('desc' => $description2 )
 			);
 
-			$presenter = $this->getMock('Saigon\Conpago\Console\Contract\Presentation\IHelpCommandPresenter');
+			$presenter = $this->getMock('Conpago\Console\Contract\Presentation\IHelpCommandPresenter');
 			$presenter->expects($this->once())->method('printCommandInfo')
 				->withConsecutive(
 					array($this->equalTo($command1), $this->equalTo($description1)),
