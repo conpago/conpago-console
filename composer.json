@@ -11,9 +11,9 @@
 		}
 	],
 	"require": {
-		"conpago/conpago-console-contract": "dev-default",
-		"conpago/conpago-di": "dev-default",
-		"conpago/conpago-contract": "dev-default"
+		"conpago/conpago-console-contract": "dev-master",
+		"conpago/conpago-di": "dev-master",
+		"conpago/conpago-contract": "dev-master"
 	},
 	"require-dev": {
 		"pdepend/pdepend": "*",
