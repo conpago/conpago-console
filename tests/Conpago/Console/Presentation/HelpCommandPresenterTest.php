@@ -9,13 +9,15 @@
 	namespace Conpago\Console\Presentation;
 
 
-	class HelpCommandPresenterTest extends \PHPUnit_Framework_TestCase {
+	use Conpago\Console\Contract\Presentation\IConsolePresenter;
+
+    class HelpCommandPresenterTest extends \PHPUnit_Framework_TestCase {
 
 		function testPrintCommandInfo(){
 			$command = 'commandName';
 			$desc = 'commandDesc';
 
-			$consolePresenter = $this->getMock('Conpago\Console\Contract\Presentation\IConsolePresenter');
+			$consolePresenter = $this->createMock(IConsolePresenter::class);
 			$consolePresenter->expects($this->once())->method('write')->with($this->equalTo($command . '     ' . $desc));
 
 			$helpCommandPresenter = new HelpCommandPresenter($consolePresenter);

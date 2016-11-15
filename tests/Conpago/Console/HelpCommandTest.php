@@ -9,14 +9,16 @@
 	namespace Conpago\Console;
 
 
-	class HelpCommandTest extends \PHPUnit_Framework_TestCase
+	use Conpago\Console\Contract\Presentation\IHelpCommandPresenter;
+
+    class HelpCommandTest extends \PHPUnit_Framework_TestCase
 	{
 		function testExecutePrintCommandInfo(){
 			$command = 'command';
 			$description = 'description';
 			$commandMetadata = array ( $command => array('desc' => $description ));
 
-			$presenter = $this->getMock('Conpago\Console\Contract\Presentation\IHelpCommandPresenter');
+			$presenter = $this->getHelpCommandPresenterMock();
 			$presenter->expects($this->once())->method('printCommandInfo')
 				->with($this->equalTo($command), $this->equalTo($description));
 
@@ -35,7 +37,7 @@
 				$command2 => array('desc' => $description2 )
 			);
 
-			$presenter = $this->getMock('Conpago\Console\Contract\Presentation\IHelpCommandPresenter');
+			$presenter = $this->getHelpCommandPresenterMock();
 			$presenter->expects($this->once())->method('printCommandInfo')
 				->withConsecutive(
 					array($this->equalTo($command1), $this->equalTo($description1)),
@@ -45,4 +47,12 @@
 			$helpCommand = new HelpCommand($commandsMetadata, $presenter);
 			$helpCommand->execute();
 		}
-	}
+
+        /**
+         * @return \PHPUnit_Framework_MockObject_MockObject
+         */
+        protected function getHelpCommandPresenterMock()
+        {
+            return $this->createMock(IHelpCommandPresenter::class);
+        }
+    }

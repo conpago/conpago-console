@@ -8,12 +8,17 @@
 
 	namespace Conpago\Console;
 
-	class ConsoleAppTest extends \PHPUnit_Framework_TestCase
+	use Conpago\Console\Contract\ICommand;
+    use Conpago\Console\Contract\Presentation\IConsolePresenter;
+    use Conpago\DI\IFactory;
+    use Conpago\Helpers\Contract\IArgs;
+
+    class ConsoleAppTest extends \PHPUnit_Framework_TestCase
 	{
 		function testAppRunWithoutArgsWriteCommandNotFound(){
-			$args = $this->getMock('Conpago\Helpers\Contract\IArgs');
+			$args = $this->getArgsMock();
 
-			$presenter = $this->getMock('Conpago\Console\Contract\Presentation\IConsolePresenter');
+			$presenter = $this->getConsolePresenterMock();
 			$presenter->expects($this->once())->method('write')->with($this->equalTo("Command '' not found."));
 
 			$app = new ConsoleApp([], $args, $presenter);
@@ -21,28 +26,52 @@
 		}
 
 		function testAppRunWithNotExistingCommandWriteCommandNotFound(){
-			$args = $this->getMock('Conpago\Helpers\Contract\IArgs');
+			$args = $this->getArgsMock();
 			$args->expects($this->any())->method('getArguments')->willReturn(['commandName']);
 
-			$presenter = $this->getMock('Conpago\Console\Contract\Presentation\IConsolePresenter');
+			$presenter = $this->getConsolePresenterMock();
 
 			$app = new ConsoleApp([], $args, $presenter);
 			$app->run();
 		}
 
 		function testAppRunWithExistingCommandRunIt(){
-			$command = $this->getMock('Conpago\Console\Contract\ICommand');
+			$command = $this->getCommandMock();
 			$command->expects($this->once())->method('execute');
 
-			$args = $this->getMock('Conpago\Helpers\Contract\IArgs');
+			$args = $this->getArgsMock();
 			$args->expects($this->any())->method('getArguments')->willReturn(['commandName']);
 
-			$presenter = $this->getMock('Conpago\Console\Contract\Presentation\IConsolePresenter');
+			$presenter = $this->getConsolePresenterMock();
 
-			$factory = $this->getMock('Conpago\DI\IFactory');
+			$factory = $this->createMock(IFactory::class);
 			$factory->expects($this->any())->method('createInstance')->willReturn($command);
 
 			$app = new ConsoleApp(['commandName' => $factory], $args, $presenter);
 			$app->run();
 		}
-	}
+
+        /**
+         * @return \PHPUnit_Framework_MockObject_MockObject
+         */
+        protected function getArgsMock()
+        {
+            return $this->createMock(IArgs::class);
+        }
+
+        /**
+         * @return \PHPUnit_Framework_MockObject_MockObject
+         */
+        protected function getConsolePresenterMock()
+        {
+            return $this->createMock(IConsolePresenter::class);
+        }
+
+        /**
+         * @return \PHPUnit_Framework_MockObject_MockObject
+         */
+        protected function getCommandMock()
+        {
+            return $this->createMock(ICommand::class);
+        }
+    }
