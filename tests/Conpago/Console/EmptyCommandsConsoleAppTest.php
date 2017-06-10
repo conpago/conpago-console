@@ -29,7 +29,10 @@ class EmptyCommandsConsoleAppTest extends TestCase
     {
         $this->argsMock->method('getArguments')->willReturn(['commandName']);
 
-        $this->presenterMock->expects($this->once())->method('write')->with($this->equalTo("Command 'commandName' not found."));
+        $this->presenterMock
+            ->expects($this->once())
+            ->method('write')
+            ->with($this->equalTo("Command 'commandName' not found."));
 
         $this->sut->run();
     }
